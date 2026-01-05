@@ -16,8 +16,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
     const meal = getMeal(params.mealSlug)
 
-    if  (!meal) {
-        notFound()
+    if (!meal) {
+        return {
+            title: 'Meal Not Found'
+        }
     }
     
     return {
@@ -26,16 +28,17 @@ export async function generateMetadata({ params }) {
     }
 }
 
-
-export default function MealDetailsPage( { params } ) {
+export default function MealDetailsPage({ params }) {
     const meal = getMeal(params.mealSlug)
 
     if (!meal) {
         notFound()
     }
 
-    meal.instructions =meal.instructions.replace(/\n/g, '<br />')
-
+    // ✅ FIXED: Safely handle instructions with fallback
+    const formattedInstructions = meal.instructions 
+        ? meal.instructions.replace(/\n/g, '<br />') 
+        : ''
 
     return <>
         <Breadcrumbs items={[
@@ -44,33 +47,36 @@ export default function MealDetailsPage( { params } ) {
             { label: meal.title, href: `/meals/${meal.slug}` }
         ]} />
 
-    <header className={ classes.header }>
-        <div className={ classes.image }>
-            <Image src={ meal.image } alt={ meal.title } fill />
-        </div>
+        <header className={classes.header}>
+            <div className={classes.image}>
+                <Image 
+                    src={meal.image} 
+                    alt={meal.title} 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, 30rem"
+                    quality={85}
+                />
+            </div>
 
-        <div className={ classes.headerText }>
-            <h1>{ meal.title }</h1>
-            <p className={ classes.creator }>
-                By <a href={`mailto:${ meal.creator_email }`}>{ meal.creator }</a>
-            </p>
+            <div className={classes.headerText}>
+                <h1>{meal.title}</h1>
+                <p className={classes.creator}>
+                    By <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
+                </p>
 
-            <p className={ classes.summary }>
-                { meal.summary }
-            </p>
-        </div>
-
-    </header>
-    
-    <main>
+                <p className={classes.summary}>
+                    {meal.summary}
+                </p>
+            </div>
+        </header>
+        
+        <main>
             <p 
-                className={ classes.instructions }
-                dangerouslySetInnerHTML={ {
-                    __html:meal.instructions,
-                } }
-            >
-
-            </p>
-    </main>
+                className={classes.instructions}
+                dangerouslySetInnerHTML={{
+                    __html: formattedInstructions,
+                }}
+            ></p>
+        </main>
     </>
 }
