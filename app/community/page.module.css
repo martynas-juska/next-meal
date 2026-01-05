@@ -1,0 +1,160 @@
+.header {
+  gap: 3rem;
+  margin: 3rem auto 5rem auto;
+  width: 90%;
+  max-width: 75rem;
+  color: #ddd6cb;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.highlight {
+  background: linear-gradient(90deg, #f9572a, #ff8a05);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main {
+  width: 90%;
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: #ddd6cb;
+}
+
+.perks {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 0;
+}
+
+.perks li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.perks img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.perks p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #ddd6cb;
+}
+
+/* Newsletter Section */
+.newsletter {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 2rem 2rem;
+  background: linear-gradient(135deg, rgba(249, 87, 42, 0.1), rgba(255, 138, 5, 0.1));
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(249, 87, 42, 0.2);
+}
+
+.newsletter h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #f9572a, #ff8a05);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.newsletter p {
+  color: #b3aea5;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.newsletterForm input {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.875rem 1.25rem;
+  border: 2px solid #454952;
+  border-radius: 8px;
+  background: #1c2027;
+  color: #ddd6cb;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.newsletterForm input:focus {
+  outline: none;
+  border-color: #f9b331;
+  background: #1f252d;
+  box-shadow: 0 0 0 3px rgba(249, 179, 49, 0.1);
+}
+
+.newsletterForm input::placeholder {
+  color: #666;
+}
+
+.newsletterForm button {
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f9572a, #ff9b05);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(249, 87, 42, 0.3);
+}
+
+.newsletterForm button:hover {
+  background: linear-gradient(90deg, #fd4715, #f9b241);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 87, 42, 0.4);
+}
+
+.newsletterForm button:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .newsletterForm {
+    flex-direction: column;
+  }
+
+  .newsletterForm input {
+    min-width: 100%;
+  }
+
+  .newsletterForm button {
+    width: 100%;
+  }
+}

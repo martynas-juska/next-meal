@@ -1,0 +1,68 @@
+.toast {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: slideInRight 0.3s ease;
+  min-width: 300px;
+}
+
+.success {
+  background: linear-gradient(135deg, #51cf66, #37b24d);
+  color: white;
+}
+
+.error {
+  background: linear-gradient(135deg, #ff6b6b, #fa5252);
+  color: white;
+}
+
+.icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.message {
+  flex: 1;
+  font-weight: 500;
+}
+
+.fadeOut {
+  animation: slideOutRight 0.3s ease forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .toast {
+    right: 1rem;
+    left: 1rem;
+    min-width: auto;
+  }
+}
